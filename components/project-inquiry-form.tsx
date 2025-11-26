@@ -43,7 +43,7 @@ export function ProjectInquiryForm() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY_HERE',
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || 'c9eca06e-f287-4847-8b44-e05e7f15146b',
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
