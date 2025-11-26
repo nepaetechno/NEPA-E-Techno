@@ -3,7 +3,8 @@ const nextConfig = {
   output: 'export',
   // IMPORTANT: If deploying to a subdirectory (like GitHub Pages), uncomment the line below and set it to your repo name.
   // Example: If your repo is https://github.com/user/my-site, set basePath to '/my-site'
-  // basePath: '/nepa-e-techno-redesign',
+  // Example: If your repo is https://github.com/user/my-site, set basePath to '/my-site'
+  basePath: '/NEPA-E-Techno',
   typescript: {
     ignoreBuildErrors: true,
   },
