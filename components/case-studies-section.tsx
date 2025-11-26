@@ -2,6 +2,7 @@ import { ArrowRight, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { getImagePath } from "@/lib/utils/get-image-path"
 
 const caseStudies = [
   {
@@ -65,7 +66,7 @@ export function CaseStudiesSection() {
                   <div className="relative h-56 sm:h-72 md:h-96 w-full rounded-2xl overflow-hidden border border-white/10 shadow-lg group-hover:shadow-primary/20 transition-all duration-500">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <Image
-                      src={study.image || "/placeholder.svg"}
+                      src={getImagePath(study.image || "/placeholder.svg")}
                       alt={study.title}
                       fill
                       className="object-cover object-center transition-transform duration-700 group-hover:scale-105"

@@ -1,11 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
+import { getImagePath } from "@/lib/utils/get-image-path"
 
 interface ProjectCardProps {
   title: string
   description: string
   tags: string[]
-  image: string
+  image?: string
   link?: string
 }
 
@@ -16,7 +17,7 @@ export function ProjectCard({ title, description, tags, image, link }: ProjectCa
       <div className="relative h-56 w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <Image
-          src={image || "/placeholder.svg"}
+          src={getImagePath(image || "/placeholder.svg")}
           alt={title}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110"
