@@ -1,5 +1,7 @@
 "use client"
 
+import Image from "next/image"
+
 const clients = [
   { name: "TechVentures", logo: "/client-logo-2.png" },
   { name: "Himalayan Crafts", logo: "/crafts-brand-logo-minimal.jpg" },
@@ -29,7 +31,7 @@ export function ClientLogos() {
                 key={index}
                 className="flex-shrink-0 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"
               >
-                <img src={client.logo || "/placeholder.svg"} alt={client.name} className="h-12 w-auto object-contain" />
+                <Image src={client.logo || "/placeholder.svg"} alt={client.name} width={150} height={48} className="h-12 w-auto object-contain" />
               </div>
             ))}
           </div>

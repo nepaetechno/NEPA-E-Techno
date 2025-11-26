@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 const technologies = [
   { name: "Bootstrap", icon: "https://cdn.simpleicons.org/bootstrap" },
@@ -50,7 +51,8 @@ export function TechStack() {
                   className="group flex items-center gap-3 px-8 py-4 bg-white rounded-full shadow-[0_6px_0_0_#4ade80] hover:shadow-[0_3px_0_0_#4ade80] hover:translate-y-1 transition-all duration-300 cursor-default border border-gray-100"
                 >
                   <div className="w-8 h-8 relative flex items-center justify-center">
-                    <img src={tech.icon || "/placeholder.svg"} alt={tech.name} className="w-full h-full object-contain" />
+                    <Image src={tech.icon || "/placeholder.svg"} alt={tech.name} width={32} height={32} className="object-contain" unoptimized />
+
                   </div>
                   <span className="text-lg font-bold text-black">{tech.name}</span>
                 </div>

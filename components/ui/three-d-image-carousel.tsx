@@ -2,6 +2,8 @@
 
 import { ArrowLeftCircle, ArrowRightCircle } from 'lucide-react';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import Image from 'next/image';
+
 
 // --- Type Definitions ---
 export interface Slide {
@@ -308,11 +310,16 @@ export const ThreeDImageCarousel: React.FC<ThreeDImageCarouselProps> = ({
                                 // Prevent navigation if dragging
                                 if (isDragging) e.preventDefault();
                             }}>
-                                <img src={slide.src} alt={`Slide ${index + 1}`}
+                                <Image
+                                    src={slide.src}
+                                    alt={`Slide ${index + 1}`}
+                                    width={550}
+                                    height={700}
+                                    className="max-w-full h-auto"
                                     onError={(e) => {
-                                        e.currentTarget.onerror = null;
                                         e.currentTarget.src = `https://placehold.co/350x200/4F46E5/ffffff?text=Slide%20${index + 1}`;
                                     }}
+                                    unoptimized
                                 />
                                 {(slide.title || slide.description || slide.icon) && (
                                     <div className="slide-content">
