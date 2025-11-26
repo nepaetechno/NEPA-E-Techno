@@ -6,7 +6,8 @@ export function getImagePath(src: string): string {
     }
 
     // Hardcoded basePath for GitHub Pages deployment
-    const basePath = '/NEPA-E-Techno';
+    // For custom domain, this should be empty
+    const basePath = '';
 
     // For relative paths starting with /, prepend basePath
     if (src.startsWith('/')) {
