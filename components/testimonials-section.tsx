@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react"
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
+import { getImagePath } from "@/lib/utils/get-image-path"
 
 const testimonials = [
   {
@@ -93,11 +95,12 @@ export function TestimonialsSection() {
             <div className="flex flex-col md:flex-row items-center gap-8">
               {/* Client photo */}
               <div className="flex-shrink-0">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg">
-                  <img
-                    src={testimonials[currentIndex].image || "/placeholder.svg"}
+                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg relative">
+                  <Image
+                    src={getImagePath(testimonials[currentIndex].image || "/placeholder.svg")}
                     alt={testimonials[currentIndex].name}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               </div>
