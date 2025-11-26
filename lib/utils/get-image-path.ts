@@ -5,8 +5,8 @@ export function getImagePath(src: string): string {
         return src;
     }
 
-    // Get basePath from environment or use default
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/NEPA-E-Techno';
+    // Hardcoded basePath for GitHub Pages deployment
+    const basePath = '/NEPA-E-Techno';
 
     // For relative paths starting with /, prepend basePath
     if (src.startsWith('/')) {
