@@ -39,7 +39,7 @@ export function CtaSection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground flex items-center gap-2 text-lg px-8 py-6 rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all hover:-translate-y-1">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white flex items-center gap-2 text-lg px-8 py-6 rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all hover:-translate-y-1">
                 Schedule a Consultation
                 <ArrowRight size={20} />
               </Button>

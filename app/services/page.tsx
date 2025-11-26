@@ -162,7 +162,7 @@ export default function ServicesPage() {
           <Link href="/contact">
             <Button
               size="lg"
-              className="bg-primary-foreground hover:bg-primary-foreground/90 text-primary font-semibold"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary font-semibold"
             >
               Schedule a Consultation
             </Button>

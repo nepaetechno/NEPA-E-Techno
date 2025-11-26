@@ -95,7 +95,7 @@ export function HeroSection() {
               <Link href="/contact">
                 <Button
                   size="lg"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground flex items-center gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all w-full sm:w-auto justify-center"
+                  className="bg-primary hover:bg-primary/90 text-white flex items-center gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all w-full sm:w-auto justify-center"
                 >
                   Get a Quote
                   <ArrowRight size={18} />

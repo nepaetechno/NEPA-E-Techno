@@ -94,7 +94,7 @@ export function Navbar() {
               </Link>
             ))}
             <Link href="/contact">
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all hover:-translate-y-0.5">
+              <Button className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all hover:-translate-y-0.5">
                 Get a Quote
               </Button>
             </Link>
@@ -160,7 +160,7 @@ export function Navbar() {
                 ))}
                 <motion.div variants={itemVariants} className="pt-4 mt-2 border-t border-border flex flex-col gap-6 px-2">
                   <Link href="/contact" onClick={() => setIsOpen(false)}>
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 h-12 text-base">
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 h-12 text-base">
                       Get a Quote
                     </Button>
                   </Link>
