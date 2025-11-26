@@ -36,15 +36,28 @@ export function ProjectInquiryForm() {
     setLoading(true)
 
     try {
-      const response = await fetch('/api/contact', {
+      // Web3Forms API endpoint
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY_HERE',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          projectType: formData.projectType,
+          budget: formData.budget,
+          deadline: formData.deadline,
+          description: formData.description,
+          subject: `New Project Inquiry from ${formData.name}`,
+        }),
       })
 
-      if (response.ok) {
+      const result = await response.json()
+
+      if (result.success) {
         setSubmitted(true)
         setFormData({
           name: "",
@@ -57,11 +70,12 @@ export function ProjectInquiryForm() {
         })
         setTimeout(() => setSubmitted(false), 5000)
       } else {
-        console.error('Failed to send message')
-        // Optionally handle error state here
+        console.error('Failed to send message:', result)
+        alert('Failed to send inquiry. Please try again.')
       }
     } catch (error) {
       console.error('Error submitting form:', error)
+      alert('An error occurred. Please try again later.')
     } finally {
       setLoading(false)
     }

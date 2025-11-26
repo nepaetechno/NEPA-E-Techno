@@ -36,23 +36,36 @@ export function ContactForm() {
     console.log("Form submitted with data:", formData)
 
     try {
-      const response = await fetch('/api/contact', {
+      // Web3Forms API endpoint
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY_HERE',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+          subject: `New Contact Form Submission from ${formData.name}`,
+        }),
       })
 
-      if (response.ok) {
+      const result = await response.json()
+
+      if (result.success) {
         setSubmitted(true)
         setFormData({ name: "", email: "", phone: "", service: "", message: "" })
         setTimeout(() => setSubmitted(false), 5000)
       } else {
-        console.error('Failed to send message')
+        console.error('Failed to send message:', result)
+        alert('Failed to send message. Please try again.')
       }
     } catch (error) {
       console.error('Error submitting form:', error)
+      alert('An error occurred. Please try again later.')
     } finally {
       setLoading(false)
     }
