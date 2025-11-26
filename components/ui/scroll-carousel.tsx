@@ -23,8 +23,7 @@ export interface FeatureItem {
 }
 
 export interface ScrollCarouselProps {
-    features1: FeatureItem[]
-    features2: FeatureItem[]
+    features: FeatureItem[]
     className?: string
     maxScrollHeight?: number
 }
@@ -32,35 +31,23 @@ export interface ScrollCarouselProps {
 const useFeatureAnimations = (
     containerRef: React.RefObject<HTMLDivElement | null>,
     scrollContainerRef: React.RefObject<HTMLDivElement | null>,
-    scrollContainerRef2: React.RefObject<HTMLDivElement | null>,
     progressBarRef: React.RefObject<HTMLDivElement | null>,
     cardRefs: React.MutableRefObject<HTMLDivElement[]>,
-    cardRefs2: React.MutableRefObject<HTMLDivElement[]>,
-    isDesktop: boolean,
     maxScrollHeight?: number
 ) => {
     useLayoutEffect(() => {
-        if (!containerRef.current) return
+        if (!containerRef.current || !scrollContainerRef.current) return
 
         let ctx = gsap.context(() => {
-            const scrollWidth1 = scrollContainerRef.current?.scrollWidth || 0
-            const scrollWidth2 = scrollContainerRef2.current?.scrollWidth || 0
+            const scrollWidth = scrollContainerRef.current?.scrollWidth || 0
             const containerWidth = containerRef.current?.offsetWidth || 0
             const cardWidth = cardRefs.current[0]?.offsetWidth || 0
             const viewportOffset = (containerWidth - cardWidth) / 2
 
-            const finalOffset1 = scrollWidth1 - containerWidth + viewportOffset
-            const finalOffset2 = scrollWidth2 - containerWidth + viewportOffset
+            const finalOffset = scrollWidth - containerWidth + viewportOffset
 
-            // Use a shorter scroll distance for mobile to prevent excessive scrolling
-            const defaultScrollDistance = isDesktop ? finalOffset1 : finalOffset1 * 0.8
-            const scrollDistance = maxScrollHeight || defaultScrollDistance
-
-            if (scrollContainerRef2.current) {
-                gsap.set(scrollContainerRef2.current, {
-                    x: -finalOffset2 + viewportOffset * 2,
-                })
-            }
+            // Use the provided maxScrollHeight or the calculated offset as the scroll distance
+            const scrollDistance = maxScrollHeight || finalOffset
 
             gsap
                 .timeline({
@@ -70,69 +57,49 @@ const useFeatureAnimations = (
                         end: () => `+=${scrollDistance}`,
                         scrub: 1,
                         pin: true,
-                        // Add pinSpacing to ensure content below is pushed down
                         pinSpacing: true,
                     },
                 })
                 .fromTo(
                     scrollContainerRef.current,
                     { x: viewportOffset },
-                    { x: -finalOffset1 + viewportOffset, ease: "none" }
+                    { x: -finalOffset + viewportOffset, ease: "none" }
                 )
 
-            gsap
-                .timeline({
+            if (progressBarRef.current) {
+                gsap.to(progressBarRef.current, {
+                    width: "100%",
+                    ease: "none",
                     scrollTrigger: {
                         trigger: containerRef.current,
                         start: "top top",
                         end: () => `+=${scrollDistance}`,
-                        scrub: 1,
+                        scrub: true,
                     },
                 })
-                .to(scrollContainerRef2.current, { x: viewportOffset, ease: "none" })
-
-            gsap.to(progressBarRef.current, {
-                width: "100%",
-                ease: "none",
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top top",
-                    end: () => `+=${scrollDistance}`,
-                    scrub: true,
-                },
-            })
+            }
         }, containerRef)
 
         return () => {
             ctx.revert()
         }
-    }, [maxScrollHeight, isDesktop])
+    }, [maxScrollHeight])
 }
 
 export const ScrollCarousel = forwardRef<HTMLDivElement, ScrollCarouselProps>(
-    ({ features1, features2, className, maxScrollHeight }, ref) => {
+    ({ features, className, maxScrollHeight }, ref) => {
         const containerRef = useRef<HTMLDivElement>(null)
         const scrollContainerRef = useRef<HTMLDivElement>(null)
-        const scrollContainerRef2 = useRef<HTMLDivElement>(null)
         const progressBarRef = useRef<HTMLDivElement>(null)
         const cardRefs = useRef<HTMLDivElement[]>([])
-        const cardRefs2 = useRef<HTMLDivElement[]>([])
-        const [isDesktop, setIsDesktop] = useState(false)
 
         useEffect(() => {
-            const checkDesktop = () => {
-                setIsDesktop(window.matchMedia("(min-width: 768px)").matches)
-            }
-            checkDesktop()
-            window.addEventListener("resize", checkDesktop)
-
             // Force refresh ScrollTrigger after mount to ensure correct pinning positions
             const timer = setTimeout(() => {
                 ScrollTrigger.refresh()
             }, 500)
 
             return () => {
-                window.removeEventListener("resize", checkDesktop)
                 clearTimeout(timer)
             }
         }, [])
@@ -140,11 +107,8 @@ export const ScrollCarousel = forwardRef<HTMLDivElement, ScrollCarouselProps>(
         useFeatureAnimations(
             containerRef,
             scrollContainerRef,
-            scrollContainerRef2,
             progressBarRef,
             cardRefs,
-            cardRefs2,
-            isDesktop,
             maxScrollHeight
         )
 
@@ -209,16 +173,9 @@ export const ScrollCarousel = forwardRef<HTMLDivElement, ScrollCarouselProps>(
                 >
                     <div
                         ref={scrollContainerRef}
-                        className="flex flex-row gap-4 md:gap-8 items-center px-6 md:px-0 w-auto"
+                        className="flex flex-row gap-8 items-center px-6 md:px-0 w-auto"
                     >
-                        {renderFeatureCards(features1, cardRefs)}
-                    </div>
-
-                    <div
-                        ref={scrollContainerRef2}
-                        className="flex flex-row gap-4 md:gap-8 items-center px-6 md:px-0 w-auto"
-                    >
-                        {renderFeatureCards(features2, cardRefs2)}
+                        {renderFeatureCards(features, cardRefs)}
                     </div>
 
                     <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-64 h-2 bg-primary/10 z-50 overflow-hidden rounded-full">

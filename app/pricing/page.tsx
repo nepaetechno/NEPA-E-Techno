@@ -12,7 +12,7 @@ const appPricing = [
   {
     name: "Basic App",
     description: "Simple mobile application",
-    price: "₨50,000 - ₨80,000",
+    price: "₨40,000 - ₨75,000",
     features: [
       "Single platform (Android/iOS)",
       "Up to 5 screens",
@@ -24,7 +24,7 @@ const appPricing = [
   {
     name: "Standard App",
     description: "Feature-rich application",
-    price: "₨1,00,000 - ₨2,00,000",
+    price: "₨90,000 - ₨1,80,000",
     features: [
       "Cross-platform (Android & iOS)",
       "10-15 screens",
@@ -87,7 +87,7 @@ export default function PricingPage() {
             {appPricing.map((plan, index) => (
               <div
                 key={index}
-                className="p-8 bg-background border border-border rounded-2xl hover:shadow-xl hover:border-primary/50 transition-all"
+                className="p-8 bg-background border border-border rounded-2xl hover:shadow-xl hover:border-primary/50 transition-all flex flex-col h-full"
               >
                 <div className="text-center mb-8">
                   <h3 className="text-xl font-bold text-foreground mb-2">{plan.name}</h3>
@@ -106,7 +106,7 @@ export default function PricingPage() {
                   ))}
                 </ul>
 
-                <Link href="/contact">
+                <Link href="/contact" className="mt-auto w-full">
                   <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">Get Quote</Button>
                 </Link>
               </div>

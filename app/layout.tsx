@@ -39,6 +39,8 @@ export const metadata: Metadata = {
   },
 }
 
+import LoadingScreen from "@/components/loading-screen"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -53,6 +55,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <LoadingScreen />
           {children}
           <Analytics />
         </ThemeProvider>

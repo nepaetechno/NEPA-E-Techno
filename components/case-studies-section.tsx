@@ -8,20 +8,22 @@ const caseStudies = [
   {
     title: "E-Commerce Platform",
     client: "E-pasal NP",
-    problem: "Low conversion rates and outdated design affecting online sales",
-    solution: "Complete redesign with modern UI/UX, optimized checkout flow, and mobile-first approach",
-    results: ["300% increase in conversions", "50% faster page load", "2x mobile traffic"],
+    problem: "Limited online presence for authentic Nepali products and poor user experience",
+    solution: "Developed a comprehensive e-commerce platform connecting Nepali artisans with global customers",
+    results: ["300% increase in sales", "Global market reach", "Seamless payment integration"],
     tools: ["React.js", "Tailwind CSS"],
     image: "/e-pasal-ecommerce.png",
+    link: "https://rojal604.github.io/project-5/",
   },
   {
     title: "Luxe Dining",
     client: "Luxe Dining",
-    problem: "Need for secure, user-friendly mobile banking solution for rural areas",
-    solution: "Built cross-platform app with offline support, biometric auth, and simple UI for all age groups",
-    results: ["50K+ downloads", "4.8 app rating", "99.9% uptime"],
-    tools: ["Flutter", "Node.js", "MongoDB", "Firebase"],
+    problem: "Manual reservation management leading to booking conflicts and inefficient table turnover",
+    solution: "Modern food table registering website with real-time booking management and instant confirmation",
+    results: ["40% increase in reservations", "Zero booking conflicts", "Enhanced customer experience"],
+    tools: ["Next.js", "Tailwind CSS", "Node.js"],
     image: "/luxe-dining.png",
+    link: "https://rojal604.github.io/project-3/",
   },
   {
     title: "Corporate Website & Branding",
@@ -31,6 +33,7 @@ const caseStudies = [
     results: ["200% lead increase", "Brand consistency", "Online booking system"],
     tools: ["React", "Node.js", "Figma", "Adobe CC"],
     image: "/coophub-cooperative.png",
+    link: "https://rojal604.github.io/project-4/",
   },
 ]
 
@@ -56,9 +59,12 @@ export function CaseStudiesSection() {
 
         <div className="space-y-12 md:space-y-20">
           {caseStudies.map((study, index) => (
-            <div
+            <Link
               key={index}
-              className="group relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 md:p-8 hover:bg-white/[0.07] transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5"
+              href={study.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 md:p-8 hover:bg-white/[0.07] transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5"
             >
               <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center`}>
                 {/* Image Side */}
@@ -108,7 +114,7 @@ export function CaseStudiesSection() {
                     <p className="text-sm font-semibold text-foreground mb-3">Key Results</p>
                     <div className="flex flex-wrap gap-3">
                       {study.results.map((result, i) => (
-                        <span key={i} className="px-3 py-1.5 bg-green-500/10 text-green-400 text-xs md:text-sm font-medium rounded-lg border border-green-500/20 flex items-center gap-2">
+                        <span key={i} className="px-3 py-1.5 bg-primary/10 text-primary text-xs md:text-sm font-medium rounded-lg border border-primary/20 flex items-center gap-2">
                           <span className="text-xs">📈</span> {result}
                         </span>
                       ))}
@@ -123,15 +129,10 @@ export function CaseStudiesSection() {
                         </span>
                       ))}
                     </div>
-
-                    <Button variant="ghost" className="group/btn text-primary hover:text-primary hover:bg-primary/10 p-0 h-auto font-semibold">
-                      Read Case Study
-                      <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                    </Button>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

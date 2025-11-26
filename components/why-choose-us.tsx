@@ -1,6 +1,7 @@
 "use client"
 
 import { Zap, Shield, Users, TrendingUp, Clock, Palette, Headphones } from "lucide-react"
+import { AnimatedIcon } from "@/components/ui/animated-icon"
 import { ScrollCarousel } from "@/components/ui/scroll-carousel"
 
 const reasons = [
@@ -70,12 +71,9 @@ export function WhyChooseUs() {
         </p>
       </div>
 
-      <ScrollCarousel
-        features1={reasons}
-        features2={[...reasons].reverse()}
-        className="pb-20"
-        maxScrollHeight={3000}
-      />
+      <div className="w-full">
+        <ScrollCarousel features={reasons} />
+      </div>
     </section>
   )
 }

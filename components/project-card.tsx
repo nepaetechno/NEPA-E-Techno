@@ -12,7 +12,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ title, description, tags, image, link }: ProjectCardProps) {
   const Content = (
-    <div className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2">
+    <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card dark:bg-white/5 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2">
       {/* Image Container */}
       <div className="relative h-56 w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -33,10 +33,10 @@ export function ProjectCard({ title, description, tags, image, link }: ProjectCa
 
       {/* Content */}
       <div className="p-6 flex flex-col h-[calc(100%-14rem)]">
-        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300">
+        <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-gray-400 text-sm mb-6 line-clamp-2 flex-grow">
+        <p className="text-muted-foreground text-sm mb-6 line-clamp-2 flex-grow">
           {description}
         </p>
 
@@ -45,7 +45,7 @@ export function ProjectCard({ title, description, tags, image, link }: ProjectCa
           {tags.slice(1).map((tag) => (
             <span
               key={tag}
-              className="px-2.5 py-0.5 text-xs font-medium text-primary/80 bg-primary/10 rounded-full border border-primary/20"
+              className="px-2.5 py-0.5 text-xs font-medium text-muted-foreground bg-muted/50 border border-border rounded-full group-hover:text-primary/80 group-hover:bg-primary/10 group-hover:border-primary/20 transition-colors duration-300"
             >
               {tag}
             </span>
@@ -54,7 +54,7 @@ export function ProjectCard({ title, description, tags, image, link }: ProjectCa
 
         {/* Button */}
         <div className="mt-auto">
-          <span className="inline-flex items-center text-sm font-semibold text-primary group-hover:translate-x-2 transition-transform duration-300">
+          <span className="inline-flex items-center text-sm font-semibold text-foreground group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">
             View Project <span className="ml-2">→</span>
           </span>
         </div>

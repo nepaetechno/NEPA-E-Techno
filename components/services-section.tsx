@@ -46,7 +46,7 @@ export function ServicesSection() {
   return (
     <section id="services" className="pt-32 pb-20 mb-20 bg-background relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-50 pointer-events-none">
-        <div className="text-center mb-8 relative z-50 pointer-events-auto">
+        <div className="text-center mb-20 relative z-50 pointer-events-auto">
           <h2 className="text-4xl font-bold text-foreground mb-4">Our Services</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             We provide comprehensive digital solutions tailored to your business needs

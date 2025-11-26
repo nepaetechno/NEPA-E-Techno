@@ -48,7 +48,7 @@ export function TechStack() {
               {[...technologies, ...technologies].map((tech, index) => (
                 <div
                   key={index}
-                  className="group flex items-center gap-3 px-8 py-4 bg-white rounded-full shadow-[0_6px_0_0_#4ade80] hover:shadow-[0_3px_0_0_#4ade80] hover:translate-y-1 transition-all duration-300 cursor-default border border-gray-100"
+                  className="group flex items-center gap-3 px-8 py-4 bg-white rounded-full shadow-[0_6px_0_0_var(--primary)] hover:shadow-[0_6px_0_0_var(--primary),0_0_20px_var(--primary)] border border-primary/10 hover:-translate-y-1 transition-all duration-300 cursor-default"
                 >
                   <div className="w-8 h-8 relative flex items-center justify-center">
                     <Image src={tech.icon || "/placeholder.svg"} alt={tech.name} width={32} height={32} className="object-contain" unoptimized />

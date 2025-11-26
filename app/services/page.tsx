@@ -104,7 +104,7 @@ export default function ServicesPage() {
       </section>
 
       {/* All Services */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-gray-50/50 dark:bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {allServices.map((service, index) => (
@@ -120,7 +120,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Process */}
-      <section className="py-20 bg-card border-y border-border">
+      <section className="py-20 bg-gray-50 dark:bg-transparent border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-block mb-4 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
@@ -135,14 +135,18 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {processSteps.map((step, index) => (
               <div key={index} className="relative group">
-                <div className="p-6 bg-background border border-border rounded-xl hover:border-primary/50 hover:shadow-lg transition-all">
+                <div className="p-6 h-full bg-slate-950 border border-slate-800 dark:border-white/10 rounded-2xl backdrop-blur-sm transition-all duration-500 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 shadow-xl dark:shadow-none">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 flex-shrink-0 bg-primary text-primary-foreground rounded-lg flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 flex-shrink-0 bg-white/5 border border-gray-200 dark:border-white/10 text-white rounded-xl flex items-center justify-center font-bold text-lg transition-all duration-300 group-hover:bg-primary group-hover:border-primary group-hover:scale-110">
                       {step.step}
                     </div>
                     <div>
-                      <h3 className="font-bold text-foreground mb-2">{step.title}</h3>
-                      <p className="text-muted-foreground text-sm">{step.description}</p>
+                      <h3 className="font-bold text-white text-lg mb-2 transition-colors duration-300 group-hover:text-primary">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">
+                        {step.description}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -155,8 +159,8 @@ export default function ServicesPage() {
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-primary via-primary/90 to-accent">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-primary-foreground mb-4">Ready to Get Started?</h2>
-          <p className="text-lg text-primary-foreground/80 mb-8">
+          <h2 className="text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
+          <p className="text-lg text-white/90 mb-8">
             Contact us today to discuss your project and get a free consultation.
           </p>
           <Link href="/contact">

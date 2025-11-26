@@ -4,6 +4,7 @@ import { ArrowLeftCircle, ArrowRightCircle } from 'lucide-react';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import { getImagePath } from '@/lib/utils/get-image-path';
+import { useRouter } from 'next/navigation';
 
 
 // --- Type Definitions ---
@@ -193,6 +194,7 @@ export const ThreeDImageCarousel: React.FC<ThreeDImageCarouselProps> = ({
     const [activeIndex, setActiveIndex] = useState(0);
     const autoplayIntervalRef = useRef<number | null>(null);
     const total = slides.length;
+    const router = useRouter();
 
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
@@ -307,10 +309,15 @@ export const ThreeDImageCarousel: React.FC<ThreeDImageCarouselProps> = ({
                             className={`cascade-slider_item ${getSlideClasses(index, activeIndex, total, itemCount)}`}
                             data-slide-number={index}
                         >
-                            <a href={slide.href} className="relative block cursor-pointer" onClick={(e) => {
-                                // Prevent navigation if dragging
-                                if (isDragging) e.preventDefault();
-                            }}>
+                            <div
+                                className="relative block cursor-pointer"
+                                onClick={() => {
+                                    // Only navigate if not dragging
+                                    if (!isDragging && slide.href) {
+                                        router.push(slide.href);
+                                    }
+                                }}
+                            >
                                 <Image
                                     src={getImagePath(slide.src)}
                                     alt={`Slide ${index + 1}`}
@@ -329,11 +336,11 @@ export const ThreeDImageCarousel: React.FC<ThreeDImageCarouselProps> = ({
                                                 {slide.icon}
                                             </div>
                                         )}
-                                        {slide.title && <h3 className="text-2xl font-bold mb-1">{slide.title}</h3>}
+                                        {slide.title && <h3 className="text-2xl font-bold mb-1 text-white">{slide.title}</h3>}
                                         {slide.description && <p className="text-base text-gray-200">{slide.description}</p>}
                                     </div>
                                 )}
-                            </a>
+                            </div>
                         </div>
                     ))}
                 </div>
