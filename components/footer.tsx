@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Twitter, MessageCircle } from "lucide-react"
 import { AnimatedIcon } from "@/components/ui/animated-icon"
+import { getImagePath } from "@/lib/utils/get-image-path"
 
 export function Footer() {
   return (
@@ -14,7 +15,7 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/logo.png"
+                src={getImagePath("/logo.png")}
                 alt="NEPA-E Techno"
                 width={150}
                 height={40}

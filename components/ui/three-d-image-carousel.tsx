@@ -3,6 +3,7 @@
 import { ArrowLeftCircle, ArrowRightCircle } from 'lucide-react';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
+import { getImagePath } from '@/lib/utils/get-image-path';
 
 
 // --- Type Definitions ---
@@ -311,7 +312,7 @@ export const ThreeDImageCarousel: React.FC<ThreeDImageCarouselProps> = ({
                                 if (isDragging) e.preventDefault();
                             }}>
                                 <Image
-                                    src={slide.src}
+                                    src={getImagePath(slide.src)}
                                     alt={`Slide ${index + 1}`}
                                     width={550}
                                     height={700}

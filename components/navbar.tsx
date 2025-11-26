@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 import { motion, AnimatePresence } from "framer-motion"
+import { getImagePath } from "@/lib/utils/get-image-path"
 
 import { usePathname } from "next/navigation"
 
@@ -72,7 +73,7 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 relative z-50">
             <Image
-              src="/logo.png"
+              src={getImagePath("/logo.png")}
               alt="NEPA-E Techno"
               width={150}
               height={40}

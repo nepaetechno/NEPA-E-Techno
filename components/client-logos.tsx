@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { getImagePath } from "@/lib/utils/get-image-path"
 
 const clients = [
   { name: "TechVentures", logo: "/client-logo-2.png" },
@@ -31,7 +32,7 @@ export function ClientLogos() {
                 key={index}
                 className="flex-shrink-0 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"
               >
-                <Image src={client.logo || "/placeholder.svg"} alt={client.name} width={150} height={48} className="h-12 w-auto object-contain" />
+                <Image src={getImagePath(client.logo || "/placeholder.svg")} alt={client.name} width={150} height={48} className="h-12 w-auto object-contain" />
               </div>
             ))}
           </div>
