@@ -5,6 +5,7 @@ import { WhatsAppButton } from "@/components/whatsapp-button"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, Target, Eye, Heart } from "lucide-react"
 import Link from "next/link"
+import { BlueCta } from "@/components/blue-cta"
 
 const values = [
   {
@@ -157,22 +158,11 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary via-primary/90 to-accent">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-primary-foreground mb-4">Let's Build Something Great Together</h2>
-          <p className="text-lg text-primary-foreground/80 mb-8">
-            Partner with us and experience the difference a dedicated team can make.
-          </p>
-          <Link href="/contact">
-            <Button
-              size="lg"
-              className="bg-primary-foreground hover:bg-primary-foreground/90 text-primary font-semibold"
-            >
-              Start a Conversation
-            </Button>
-          </Link>
-        </div>
-      </section>
+      <BlueCta
+        title="Let's Build Something Great Together"
+        description="Partner with us and experience the difference a dedicated team can make."
+        buttonText="Start a Conversation"
+      />
 
       <Footer />
       <WhatsAppButton />

@@ -2,7 +2,7 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { PricingSection } from "@/components/pricing-section"
 import { FaqSection } from "@/components/faq-section"
-import { CtaSection } from "@/components/cta-section"
+import { BlueCta } from "@/components/blue-cta"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -116,7 +116,11 @@ export default function PricingPage() {
       </section>
 
       <FaqSection />
-      <CtaSection />
+      <BlueCta
+        title="Ready to Transform Your Business?"
+        description="Let's work together to bring your vision to life and drive real results with our expert digital solutions."
+        buttonText="Schedule a Consultation"
+      />
       <Footer />
       <WhatsAppButton />
     </main>

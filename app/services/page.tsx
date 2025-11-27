@@ -5,6 +5,7 @@ import { WhatsAppButton } from "@/components/whatsapp-button"
 import { Code, Smartphone, Palette, Shield, Headphones, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { BlueCta } from "@/components/blue-cta"
 
 const allServices = [
   {
@@ -157,22 +158,11 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary via-primary/90 to-accent">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
-          <p className="text-lg text-white/90 mb-8">
-            Contact us today to discuss your project and get a free consultation.
-          </p>
-          <Link href="/contact">
-            <Button
-              size="lg"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary font-semibold"
-            >
-              Schedule a Consultation
-            </Button>
-          </Link>
-        </div>
-      </section>
+      <BlueCta
+        title="Ready to Get Started?"
+        description="Contact us today to discuss your project and get a free consultation."
+        buttonText="Schedule a Consultation"
+      />
 
       <Footer />
       <WhatsAppButton />
