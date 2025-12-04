@@ -21,7 +21,10 @@ export const metadata: Metadata = {
     "Premium digital agency offering web development, app development, UI/UX design, branding, and IT support services.",
 
   icons: {
-    icon: "/favicon-circle-v4.png",
+    icon: [
+      { url: "/favicon-circle-v4.png", type: "image/png" },
+    ],
+    shortcut: "/favicon-circle-v4.png",
     apple: "/favicon-circle-v4.png",
   },
 }
