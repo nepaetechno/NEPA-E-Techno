@@ -22,10 +22,26 @@ export const metadata: Metadata = {
 
   icons: {
     icon: [
-      { url: "/NEPA-E-Techno/favicon-circle-v4.png", type: "image/png" },
+      { url: "/favicon-circle-v4.png", type: "image/png" },
     ],
-    shortcut: "/NEPA-E-Techno/favicon-circle-v4.png",
-    apple: "/NEPA-E-Techno/favicon-circle-v4.png",
+    shortcut: "/favicon-circle-v4.png",
+    apple: "/favicon-circle-v4.png",
+  },
+  openGraph: {
+    title: "NEPA-E Techno | Digital Solutions & Web Development",
+    description: "Premium digital agency offering web development, app development, UI/UX design, branding, and IT support services.",
+    url: "https://nepae-technocenter.center",
+    siteName: "NEPA-E Techno",
+    images: [
+      {
+        url: "/logo.png",
+        width: 800,
+        height: 600,
+        alt: "NEPA-E Techno Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
   },
 }
 
