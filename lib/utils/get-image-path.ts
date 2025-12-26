@@ -14,6 +14,9 @@ export function getImagePath(src: string): string {
         return `${basePath}${src}`;
     }
 
+    // For relative paths WITHOUT /, also return them (relative to root)
+    return `${basePath}/${src}`;
+
     // Return as-is for all other cases
     return src;
 }

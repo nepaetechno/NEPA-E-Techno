@@ -74,6 +74,8 @@ export function HeroSection() {
             <div className="inline-block mb-4 px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full border border-primary/20">
               <span className="text-primary text-sm font-semibold">Welcome to NEPA-E Techno</span>
             </div>
+            {/* Debug Image */}
+            <img src="/logo.png" alt="Debug Logo" className="w-10 h-10 mb-4 border border-red-500" />
 
             <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold mb-6 text-foreground leading-tight">
               We Build Scalable
