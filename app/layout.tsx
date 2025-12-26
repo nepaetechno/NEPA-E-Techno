@@ -22,10 +22,10 @@ export const metadata: Metadata = {
 
   icons: {
     icon: [
-      { url: "/favicon-circle-v4.png", type: "image/png" },
+      { url: "/NEPA-E-Techno/favicon-circle-v4.png", type: "image/png" },
     ],
-    shortcut: "/favicon-circle-v4.png",
-    apple: "/favicon-circle-v4.png",
+    shortcut: "/NEPA-E-Techno/favicon-circle-v4.png",
+    apple: "/NEPA-E-Techno/favicon-circle-v4.png",
   },
 }
 
